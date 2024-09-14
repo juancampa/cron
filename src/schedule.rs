@@ -87,6 +87,9 @@ impl Schedule {
 
                             for second in self.fields.seconds.ordinals().range(second_range).cloned() {
                                 let timezone = after.timezone();
+
+                                // MEMBRANE: quiet this deprecation warning for now to reduce noise
+                                #[allow(deprecated)]
                                 let candidate = if let Some(candidate) = timezone
                                     .ymd(year as i32, month, day_of_month)
                                     .and_hms_opt(hour, minute, second)
@@ -185,6 +188,9 @@ impl Schedule {
                             for second in self.fields.seconds.ordinals().range(second_range).rev().cloned()
                             {
                                 let timezone = before.timezone();
+
+                                // MEMBRANE: quiet this deprecation warning for now to reduce noise
+                                #[allow(deprecated)]
                                 let candidate = if let Some(candidate) = timezone
                                     .ymd(year as i32, month, day_of_month)
                                     .and_hms_opt(hour, minute, second)
